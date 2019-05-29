@@ -6,6 +6,7 @@ Geolosys is a Minecraft Forge mod written to be completely compatible with as ma
 
 The mod is designed to completely overhaul ore generation, so with the default configurations you will have to rely on it for even Vanilla ore resources. As I have written an incredibly extensive in-game guide (See the Field Manual recipe below), I will not go into detail of all the mechanics on this site. Mostly, I will cover the API and CraftTweaker integrations
 
- .. |Field Manual| image:: images/field_manual.png
-    :width: 500
-    :alt: Crafting Recipe for Field manual
+.. image:: images/field_manual.png
+    :width: 256px
+    :align: center
+    :alt: Field Manual Crafting Recipe
