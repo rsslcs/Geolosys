@@ -23,3 +23,5 @@ gradle-app.setting
 .project
 .classpath
 .settings/org.eclipse.buildship.core.prefs
+
+**/_build
