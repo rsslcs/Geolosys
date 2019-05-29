@@ -1,0 +1,12 @@
+site_name: Geolosys Documentation
+repo_url: https://github.com/oitsjustjose/geolosys/
+remote_branch: docs
+theme: cinder
+
+nav:
+  - Home: index.md
+  - CraftTweaker: CraftTweaker.md
+
+plugins:
+    - search:
+        separator: '[\s\-\.]+'
