@@ -5,6 +5,7 @@ theme: cinder
 
 nav:
   - Home: index.md
+  - Config: Config.md
   - CraftTweaker: CraftTweaker.md
 
 plugins:
