@@ -1,8 +1,8 @@
-# Overview
+# The New Config
 
 As of Geolosys v3.0.0, the `json` file has been moved from `geolosys_ores.json` to `geolosys.json`. Not only is this more consistent with what it contains, but it also ensures that updating to v3.0.0 does not face any issues based off of an old `geolosys_ores.json` layout. This is because the functionality of this file has completely changed!
 
-With the v3.0.0 `json` config file, you can now remove or add entries that will be dynamically parsed for you at run-time! The results of the parsing will be shown in the logs if you are uncertain as to whether or not it will work, so let's get started!
+With the v3.0.0 `json` config file, you can now remove or add entries that will be dynamically parsed for you at run-time! In fact, anything you add or remove will **automatically be added or removed from the field manual!** The results of the parsing will be shown in the logs if you are uncertain as to whether or not it will work, so let's get started!
 
 ## JSON format
 
