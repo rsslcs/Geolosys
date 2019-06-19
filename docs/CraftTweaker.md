@@ -22,6 +22,7 @@ The order of the arguments are:
 - int `yMax`
 - int `size`
 - int `chance`: Higher means more likely; this is relative to how many ores you have. For example, having only a total of chance=20 (for all ores), then a chance of 4 here would result in a 4 out of 20 chance.
+- float `density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
 - int\[ \] `dimBlacklist`: Array of dimension ID's the ore is NOT allowed in
 - <blockstate\>\[ \] `blocksValidForReplacement` (**optional**): Blocks this deposit can replace while generating
 
@@ -29,7 +30,7 @@ So, for example - to generate Spruce Logs from Y-levels 0-70, with a chance and 
 
 ```zenscript
 mods.geolosys.ores.addOre(
-    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, [-1, 1]
+    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, 1.0 as float, [-1, 1]
 );
 ```
 
@@ -37,7 +38,7 @@ Optionally, if you want to specify what blocks this deposit can replace, you can
 
 ```zenscript
 mods.geolosys.ores.addOre(
-    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, [-1, 1], [<blockstate:minecraft:stone>]
+    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, 1.0 as float, [-1, 1], [<blockstate:minecraft:stone>]
 );
 ```
 
@@ -50,12 +51,13 @@ A biome restricted deposit is new to Geolosys v3.0.0. This kind of deposit can o
 
 This command will output a list of biome ResourceLocations (that's the `<modid>:<internalBiomeName>` part of the output) which can be used in blacklisting or whitelisting a deposit from that biome. The order of the arguments are:
 
-- <blockstate> `oreBlock`
-- <blockstate> `sampleBlock`
+- <blockstate\> `oreBlock`
+- <blockstate\> `sampleBlock`
 - int `yMin`
 - int `yMax`
 - int `size`
 - int `chance`: Higher means more likely; this is relative to how many ores you have. For example, having only a total of chance=20 (for all ores), then a chance of 4 here would result in a 4 out of 20 chance.
+- float `density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
 - int\[ \] `dimBlacklist`: Array of dimension ID's the ore is NOT allowed in
 - string\[ \] `biomes`: Array of biomes to be selected
 - bool `isWhitelist`: Determines if the `biomes` array is considered a blacklist or whitelist
@@ -65,7 +67,7 @@ So, expanding on the above example, if we want to restrict that to only Plains a
 
 ```zenscript
 mods.geolosys.ores.addOre(
-    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, [-1, 1], ["minecraft:plains", "minecraft:desert"], true
+    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, 1.0 as float, [-1, 1], ["minecraft:plains", "minecraft:desert"], true
 );
 ```
 
@@ -73,7 +75,7 @@ Again, this can include a specific list of blocks that this deposit can replace.
 
 ```zenscript
 mods.geolosys.ores.addOre(
-    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, [-1, 1], ["minecraft:plains", "minecraft:desert"], true, [<blockstate:minecraft:stone>]
+    <blockstate:minecraft:log:variant=spruce>, <blockstate:minecraft:log:variant=oak>, 0, 70, 20, 20, 1.0 as float, [-1, 1], ["minecraft:plains", "minecraft:desert"], true, [<blockstate:minecraft:stone>]
 );
 ```
 
@@ -83,18 +85,19 @@ A multi-ore deposit is one which consists of multiple different types of ores. T
 
 The argument order is as follows:
 
-- <blockstate>[ ] `oreBlocks`
+- <blockstate\>[ ] `oreBlocks`
 - int[ ] `oreBlockChances`: **Should equal to 100 and be equal number of items as** `oreBlocks`
-- <blockstate>[ ] `sampleBlocks`
+- <blockstate\>[ ] `sampleBlocks`
 - int[ ] `sampleBlocksChances`: **Should equal to 100 and be equal number of items as** `sampleBlocks`
 - int `yMin`
 - int `yMax`
 - int `size`
 - int `chance`: Higher means more likely; this is relative to how many ores you have. For example, having only a total of chance=20 (for all ores), then a chance of 4 here would result in a 4 out of 20 chance.
+- float `density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
 - int\[ \] `dimBlacklist`: Array of dimension ID's the ore is NOT allowed in
 - <blockstate\>\[ \] `blocksValidForReplacement` (**optional**): Blocks this deposit can replace while generating
 
-For example: 
+For example:
 
 ```zenscript
 mods.geolosys.ores.addOre(
@@ -102,7 +105,7 @@ mods.geolosys.ores.addOre(
     [50, 50],
     [<blockstate:minecraft:log:variant=oak>, <blockstate:minecraft:log2:variant=acacia>],
     [20, 80],
-    0, 70, 20, 20, [-1, 1]
+    0, 70, 20, 20, 1.0 as float, [-1, 1]
 );
 ```
 
@@ -114,7 +117,7 @@ mods.geolosys.ores.addOre(
     [50, 50],
     [<blockstate:minecraft:log:variant=oak>, <blockstate:minecraft:log2:variant=acacia>],
     [20, 80],
-    0, 70, 20, 20, [-1, 1],
+    0, 70, 20, 20, 1.0 as float, [-1, 1],
     [<blockstate:minecraft:stone>]
 );
 ```
@@ -123,14 +126,15 @@ mods.geolosys.ores.addOre(
 
 Last in the ore deposits is a biome-restricted, multi-ore deposit. This one should speak for itself, but if it doesn't it is a deposit which whose generation biome can be black/whitelisted *and* can consist of multiple blocks. As you might imagine, the arguments look like an an amalgamation of the two:
 
-- <blockstate>[ ] `oreBlocks`
+- <blockstate\>[ ] `oreBlocks`
 - int[ ] `oreBlockChances`: **Should equal to 100 and be equal number of items as** `oreBlocks`
-- <blockstate>[ ] `sampleBlocks`
+- <blockstate\>[ ] `sampleBlocks`
 - int[ ] `sampleBlocksChances`: **Should equal to 100 and be equal number of items as** `sampleBlocks`
 - int `yMin`
 - int `yMax`
 - int `size`
 - int `chance`: Higher means more likely; this is relative to how many ores you have. For example, having only a total of chance=20 (for all ores), then a chance of 4 here would result in a 4 out of 20 chance.
+- float `density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
 - string\[ \] `biomes`: Array of biomes to be selected
 - bool `isWhitelist`: Determines if the `biomes` array is considered a blacklist or whitelist
 - int\[ \] `dimBlacklist`: Array of dimension ID's the ore is NOT allowed in
@@ -144,7 +148,7 @@ mods.geolosys.ores.addOre(
     [50, 50],
     [<blockstate:minecraft:log:variant=oak>, <blockstate:minecraft:log2:variant=acacia>],
     [20, 80],
-    0, 70, 20, 20, [-1, 1],
+    0, 70, 20, 20, 1.0 as float, [-1, 1],
     ["minecraft:plains", "minecraft:desert"],
     true,
 );
@@ -158,7 +162,7 @@ mods.geolosys.ores.addOre(
     [50, 50],
     [<blockstate:minecraft:log:variant=oak>, <blockstate:minecraft:log2:variant=acacia>],
     [20, 80],
-    0, 70, 20, 20, [-1, 1],
+    0, 70, 20, 20, 1.0 as float, [-1, 1],
     ["minecraft:plains", "minecraft:desert"],
     true,
     [<blockstate:minecraft:stone>]

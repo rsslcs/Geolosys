@@ -85,6 +85,7 @@ The format of an ore is:
     "chance": 0,
     "size": 0,
     "dimBlacklist": [-1, 1],
+    "density": 0.95,
     "blockStateMatchers": [
         "minecraft:stone"
     ],
@@ -111,11 +112,14 @@ Let's break down each one of those items and describe what's optional and what's
 
 `dimBlacklist`: An array of integers representing dimension IDs not to generate this deposit in
 
+`density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
+
 `blockStateMatchers`: **Optional**: An override for the default blocks in your `geolosys.cfg` file for which blocks this deposit can replace when generating
 
 `biomes`: **Optional**: A list of biome ResourceLocations
 
 `isWhitelist`: **Required if `biomes` is defined**: A boolean value defining whether or not the list `biomes` is a blacklist or whitelist for where this deposit can generate.
+
 
 ## The Stones Section
 

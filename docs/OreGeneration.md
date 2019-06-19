@@ -13,3 +13,9 @@ The default configuration for Ore Generation has changed with Geolosys v3.0.0. M
 * Autunite is now found in Extreme Hills of all types, and Ice Mountains
 
 All of these changes are reflected in the Field Manual
+
+## Pluton Density
+
+Additionally, plutons can now have a density (as of 3.0.0c). This density describes how much of the pluton is/are the defined ore block/blocks. For example, a density of `1.0` means the pluton will generate exactly how it used to. A density of `0.75` means that the pluton will take on the same shape, but only 75% of the blocks within that shape will actually be the ore block(s) -- the rest will remain whatever block they were initially.
+
+This change is reflected in the docs for CraftTweaker and the JSON config.
