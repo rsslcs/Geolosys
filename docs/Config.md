@@ -90,7 +90,9 @@ The format of an ore is:
         "minecraft:stone"
     ],
     "biomes": [
-        "minecraft:plains"
+        "minecraft:plains",
+        "DRY",
+        "ARID"
     ],
     "isWhitelist": true
 }
@@ -116,7 +118,7 @@ Let's break down each one of those items and describe what's optional and what's
 
 `blockStateMatchers`: **Optional**: An override for the default blocks in your `geolosys.cfg` file for which blocks this deposit can replace when generating
 
-`biomes`: **Optional**: A list of biome ResourceLocations
+`biomes`: **Optional**: A list of biome ResourceLocations *or* BiomeDictionary name (i.e. `DESERT`)
 
 `isWhitelist`: **Required if `biomes` is defined**: A boolean value defining whether or not the list `biomes` is a blacklist or whitelist for where this deposit can generate.
 
