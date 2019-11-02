@@ -10,5 +10,5 @@ nav:
   - CraftTweaker: CraftTweaker.md
 
 plugins:
-    - search:
-        separator: '[\s\-\.]+'
+  - search:
+      separator: '[\s\-\.]+'

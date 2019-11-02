@@ -42,7 +42,6 @@ mods.geolosys.ores.addOre(
 );
 ```
 
-
 ## Biome-Restricted Deposit
 
 A biome restricted deposit is new to Geolosys v3.0.0. This kind of deposit can only generate in prescribed biomes. The CraftTweaker API, as of writing, does not yet have much by means of biome functionality, but fortunatly it does have an in-game command to help your search:
@@ -124,7 +123,7 @@ mods.geolosys.ores.addOre(
 
 ## Biome-Restricted Multi-Ore Deposit
 
-Last in the ore deposits is a biome-restricted, multi-ore deposit. This one should speak for itself, but if it doesn't it is a deposit which whose generation biome can be black/whitelisted *and* can consist of multiple blocks. As you might imagine, the arguments look like an an amalgamation of the two:
+Last in the ore deposits is a biome-restricted, multi-ore deposit. This one should speak for itself, but if it doesn't it is a deposit which whose generation biome can be black/whitelisted _and_ can consist of multiple blocks. As you might imagine, the arguments look like an an amalgamation of the two:
 
 - <blockstate\>[ ] `oreBlocks`
 - int[ ] `oreBlockChances`: **Should equal to 100 and be equal number of items as** `oreBlocks`
