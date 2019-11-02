@@ -8,19 +8,17 @@ With the v3.0.0 `json` config file, you can now remove or add entries that will 
 
 If you have not learned how a JSON file is formatted yet, here is a quick run-down (though really, it's quite simple. Learn more [here](https://www.digitalocean.com/community/tutorials/an-introduction-to-json) if this tutorial isn't good enough):
 
-The `json` file *starts* with a matching pair of curly braces:
+The `json` file _starts_ with a matching pair of curly braces:
 
 ```json
-{
-
-}
+{}
 ```
 
 Within any pair of curly braces, you can place a key-value pair inside! Essentially, the key is what I use in my code to look up, and the value is what you want that key to correspond to. So if your key is `yMin`, then you want the minimum Y value to be your value. For example:
 
 ```json
 {
-    "yMin": 30
+  "yMin": 30
 }
 ```
 
@@ -29,23 +27,21 @@ This snippet means that the value for `yMin` shall be 30. The order of where you
 So the next point to cover is the array. In JSON, the array is a pair of brackets:
 
 ```json
-[
-
-]
+[]
 ```
 
 Arrays represent a list of items, so if you wanted to list off the ResourceLocations of some Minecraft blocks in an array, you'd do so like this:
 
 ```json
 [
-    "minecraft:stone:0",
-    "minecraft:stone:1",
-    "minecraft:stone:3",
-    "minecraft:stone:5"
+  "minecraft:stone:0",
+  "minecraft:stone:1",
+  "minecraft:stone:3",
+  "minecraft:stone:5"
 ]
 ```
 
-Why does this matter? Because your *value* to a *key* **can be an array**, and the new Geolosys config depends on this.
+Why does this matter? Because your _value_ to a _key_ **can be an array**, and the new Geolosys config depends on this.
 
 So now that we have this handled, let's get to how I require the `geolosys.json` file to be formatted.
 
@@ -55,16 +51,12 @@ The format of the `geolosys.json` file goes like so:
 
 ```json
 {
-    "ores": [
-
-    ],
-    "stones": [
-
-    ]
+  "ores": [],
+  "stones": []
 }
 ```
 
-Notice, I have two keys, separated by commas, and their values each are an array. This array is considered a type of that key. So for example, everything in the `ores` array is an ore, and everything in the `stones` array is a stone. 
+Notice, I have two keys, separated by commas, and their values each are an array. This array is considered a type of that key. So for example, everything in the `ores` array is an ore, and everything in the `stones` array is a stone.
 
 ## The Ores Section
 
@@ -72,29 +64,18 @@ The format of an ore is:
 
 ```json
 {
-    "blocks": [
-        "minecraft:diamond_ore",
-        100
-    ],
-    "samples": [
-        "minecraft:diamond_block",
-        100
-    ],
-    "yMin": 0,
-    "yMax": 0,
-    "chance": 0,
-    "size": 0,
-    "dimBlacklist": [-1, 1],
-    "density": 0.95,
-    "blockStateMatchers": [
-        "minecraft:stone"
-    ],
-    "biomes": [
-        "minecraft:plains",
-        "DRY",
-        "ARID"
-    ],
-    "isWhitelist": true
+  "blocks": ["minecraft:diamond_ore", 100],
+  "samples": ["minecraft:diamond_block", 100],
+  "yMin": 0,
+  "yMax": 0,
+  "chance": 0,
+  "size": 0,
+  "dimBlacklist": [-1, 1],
+  "density": 0.95,
+  "blockStateMatchers": ["minecraft:stone"],
+  "biomes": ["minecraft:plains", "DRY", "ARID"],
+  "isWhitelist": true,
+  "type": "SPARSE"
 }
 ```
 
@@ -116,12 +97,18 @@ Let's break down each one of those items and describe what's optional and what's
 
 `density`: Ranges from `0.0` to `1.0`, where a density of `1.0` represents a pluton whose spheroid generation is completely solid with the block(s) defined in `blocks`. A density of `0.5` would represent a pluton of the same shape and size as `1.0`, but consisting of half as many ore blocks, which would still remain the original blocks.
 
+`type`: **[as of Geolosys 1.14.4 v4.0.8]** A string representing the type of pluton to generate. The `size` of the pluton still affects each of these types, just in different ways. There are four types of plutons possible to generate:
+
+- [`SPARSE`](https://cdn.discordapp.com/attachments/587748165378244609/637800612808884224/2019-10-19_18.30.31.png): Ores will be scattered throughout the chunk bounderies between `yMin` and `yMax`, and `size` defines how dense the sparse distribution is.
+- `DENSE`: The same generation as pre-4.0.8 - a large, spherical pluton that lies randomly between`yMin` and `yMax`, and `size` defines the radius of the sphere
+- [`DIKE`](https://cdn.discordapp.com/attachments/587748165378244609/637800613664784415/2019-10-24_22.15.12.png): A vertical spire-like ore distribution, approximately generating from `yMin` and `yMax`. `size` does not _yet_ have an implementation in Dike generation, but will soon:tm:.
+- [`LAYER`](https://cdn.discordapp.com/attachments/587748165378244609/637800615925514240/2019-10-24_22.16.23.png): Ores will be distributed in a circular arrangement randomly placed between `yMin` and `yMax`, and `size` defines the radius of the circle. **An aside:** This is best used for coals -- coal is created as a result of bio matter being compressed under high pressure for millions of years, hence it usually forms in layers as the foliage that created it usually dies in layers.
+
 `blockStateMatchers`: **Optional**: An override for the default blocks in your `geolosys.cfg` file for which blocks this deposit can replace when generating
 
-`biomes`: **Optional**: A list of biome ResourceLocations *or* BiomeDictionary name (i.e. `DESERT`)
+`biomes`: **Optional**: A list of biome ResourceLocations _or_ BiomeDictionary name (i.e. `DESERT`)
 
 `isWhitelist`: **Required if `biomes` is defined**: A boolean value defining whether or not the list `biomes` is a blacklist or whitelist for where this deposit can generate.
-
 
 ## The Stones Section
 
@@ -129,12 +116,12 @@ The format of a stone entry is:
 
 ```json
 {
-    "block": "minecraft:stone:1",
-    "size": 40,
-    "chance": 10,
-    "yMin": 2,
-    "yMax": 70,
-    "dimBlacklist": [-1, 1]
+  "block": "minecraft:stone:1",
+  "size": 40,
+  "chance": 10,
+  "yMin": 2,
+  "yMax": 70,
+  "dimBlacklist": [-1, 1]
 }
 ```
 
