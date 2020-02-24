@@ -8,6 +8,7 @@ nav:
   - Ore Generation: OreGeneration.md
   - Config: Config.md
   - CraftTweaker: CraftTweaker.md
+  - Download: 'https://www.curseforge.com/minecraft/mc-mods/geolosys'
 
 plugins:
   - search:
