@@ -2,6 +2,12 @@
 
 The CraftTweaker add-on has been created to make adding new deposits to Geolosys in an even more robust way. You can follow along the following pages to see how this works.
 
+## In MC 1.14+, This CraftTweaker Support Is Not Implemented
+
+This may be added at a later date for 1.16 or greater, but 1.14 and 1.15 will not have CT Support.
+
+-----
+
 Ores require a special import in your `.zs` script:
 
 `import mods.geolosys.ores;`
